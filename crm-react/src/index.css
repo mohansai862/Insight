@@ -1,0 +1,943 @@
+/**
+ * Tech Tammina CRM - Global Styles
+ * Futuristic design with 60% Blue, 30% White, 10% Black color strategy
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Tech Tammina Brand Colors */
+    --blue-600: #2563eb;
+    --blue-700: #1d4ed8;
+    --blue-500: #3b82f6;
+    --white: #ffffff;
+    --white-2: #f8fafc;
+    --black: #0b0f14;
+    --ink: #0f172a;
+  }
+
+  * {
+    @apply border-gray-200;
+  }
+
+  html {
+    @apply scroll-smooth;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    @apply bg-white text-ink font-sans antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    font-variation-settings: 'opsz' 32;
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+  }
+
+  /* Modal overlay fix - prevent white lines */
+  .modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Hide browser's default password toggle */
+  input[type="password"]::-ms-reveal,
+  input[type="password"]::-ms-clear {
+    display: none !important;
+  }
+
+  input[type="password"]::-webkit-credentials-auto-fill-button,
+  input[type="password"]::-webkit-contacts-auto-fill-button {
+    display: none !important;
+  }
+
+  /* Dark mode body */
+  .dark body {
+    @apply bg-gray-900 text-gray-100;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary-500 ring-offset-2 ring-offset-white;
+  }
+
+  /* Dark mode focus */
+  .dark *:focus-visible {
+    @apply ring-offset-gray-900;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-glass border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-gray-900/80 backdrop-blur-glass border border-gray-700/20;
+  }
+
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium px-4 py-2 rounded-xl transition-all duration-120 hover:scale-[1.02] hover:shadow-medium active:scale-[0.98] active:translate-y-px focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-gray-50 text-ink border border-gray-200 font-medium px-4 py-2 rounded-xl transition-all duration-120 hover:scale-[1.02] hover:shadow-soft active:scale-[0.98] active:translate-y-px focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-gray-100 text-gray-700 font-medium px-4 py-2 rounded-xl transition-all duration-120 hover:scale-[1.02] active:scale-[0.98] active:translate-y-px focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2;
+  }
+
+  /* Card styles */
+  .card {
+    @apply bg-white rounded-2xl border border-gray-200 shadow-soft;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-120 hover:shadow-medium hover:scale-[1.01];
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-200 rounded-xl bg-white text-ink placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-120;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+
+  .skeleton-shimmer {
+    @apply relative overflow-hidden bg-gray-200 rounded;
+  }
+
+  .skeleton-shimmer::after {
+    @apply absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent;
+    content: '';
+  }
+
+  /* Status badges */
+  .status-new {
+    @apply bg-blue-50 text-blue-700 border-blue-200;
+  }
+
+  .status-active {
+    @apply bg-green-50 text-green-700 border-green-200;
+  }
+
+  .status-pending {
+    @apply bg-yellow-50 text-yellow-700 border-yellow-200;
+  }
+
+  .status-closed {
+    @apply bg-gray-50 text-gray-700 border-gray-200;
+  }
+
+  /* Priority indicators */
+  .priority-high {
+    @apply bg-red-50 text-red-700 border-red-200;
+  }
+
+  .priority-medium {
+    @apply bg-yellow-50 text-yellow-700 border-yellow-200;
+  }
+
+  .priority-low {
+    @apply bg-green-50 text-green-700 border-green-200;
+  }
+}
+
+@layer utilities {
+
+  /* Header and dropdown layering */
+  .header-fixed {
+    position: fixed !important;
+    top: 0 !important;
+    z-index: 50 !important;
+    background-color: white !important;
+  }
+
+  .dark .header-fixed {
+    background-color: rgb(31 41 55) !important;
+  }
+
+  .dropdown-menu {
+    z-index: 40 !important;
+    position: absolute !important;
+  }
+
+  .dropdown-portal {
+    z-index: 40 !important;
+  }
+
+  /* Higher z-index for nested dropdowns */
+  .z-60 {
+    z-index: 60 !important;
+  }
+
+  /* Text gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.2s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Animation delays */
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-all duration-120 hover:scale-[1.02] hover:shadow-medium;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-120 hover:shadow-lg hover:shadow-primary-500/25;
+  }
+
+  /* Layout utilities */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Dark mode utilities */
+  .dark-card {
+    @apply dark:bg-gray-800 dark:border-gray-700;
+  }
+
+  .dark-input {
+    @apply dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:placeholder-gray-400;
+  }
+
+  /* Dark mode button variants */
+  .dark .btn-secondary {
+    @apply bg-gray-800 hover:bg-gray-700 text-gray-100 border-gray-700;
+  }
+
+  .dark .btn-ghost {
+    @apply hover:bg-gray-800 text-gray-300;
+  }
+
+  /* Dark mode card styles */
+  .dark .card {
+    @apply bg-gray-800 border-gray-700;
+  }
+
+  /* Dark mode input styles */
+  .dark .input {
+    @apply bg-gray-800 border-gray-700 text-gray-100 placeholder-gray-400;
+  }
+
+  /* Universal dark mode fixes */
+  .dark {
+    color-scheme: dark;
+  }
+
+  .dark h1,
+  .dark h2,
+  .dark h3,
+  .dark h4,
+  .dark h5,
+  .dark h6 {
+    @apply text-gray-100 !important;
+  }
+
+  .dark p,
+  .dark span,
+  .dark div,
+  .dark li,
+  .dark a {
+    @apply text-gray-100 !important;
+  }
+
+  .dark label {
+    @apply text-gray-300 !important;
+  }
+
+  .dark select,
+  .dark textarea,
+  .dark input {
+    @apply bg-gray-800 border-gray-600 text-gray-100 !important;
+  }
+
+  .dark option {
+    @apply bg-gray-800 text-gray-100 !important;
+  }
+
+  .dark table {
+    @apply text-gray-100 !important;
+  }
+
+  .dark th {
+    @apply text-gray-400 bg-gray-800 !important;
+  }
+
+  .dark td {
+    @apply text-gray-100 border-gray-700 !important;
+  }
+
+  .dark tr {
+    @apply border-gray-700 !important;
+  }
+
+  /* Icon fixes */
+  .dark svg {
+    @apply text-gray-300 !important;
+  }
+
+  .dark button svg {
+    @apply text-gray-300 !important;
+  }
+
+  /* Text color overrides */
+  .dark .text-gray-500 {
+    @apply text-gray-400 !important;
+  }
+
+  .dark .text-gray-600 {
+    @apply text-gray-400 !important;
+  }
+
+  .dark .text-gray-700 {
+    @apply text-gray-300 !important;
+  }
+
+  .dark .text-gray-800 {
+    @apply text-gray-200 !important;
+  }
+
+  .dark .text-gray-900 {
+    @apply text-gray-100 !important;
+  }
+
+  /* Background fixes */
+  .dark .bg-white {
+    @apply bg-gray-800 !important;
+  }
+
+  .dark .bg-gray-50 {
+    @apply bg-gray-700 !important;
+  }
+
+  .dark .bg-gray-100 {
+    @apply bg-gray-700 !important;
+  }
+
+  /* Border fixes */
+  .dark .border-gray-200 {
+    @apply border-gray-600 !important;
+  }
+
+  /* Hover states */
+  .dark .hover\:bg-gray-50:hover {
+    @apply bg-gray-700 !important;
+  }
+
+  .dark .hover\:bg-gray-100:hover {
+    @apply bg-gray-700 !important;
+  }
+
+  /* Placeholder text */
+  .dark ::placeholder {
+    @apply text-gray-400 !important;
+  }
+
+  /* Standardized placeholder styles for all inputs */
+  ::placeholder {
+    color: #9ca3af !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    opacity: 1 !important;
+  }
+
+  input::placeholder,
+  textarea::placeholder,
+  select::placeholder {
+    color: #9ca3af !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    opacity: 1 !important;
+  }
+
+  .dark ::placeholder {
+    color: #6b7280 !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    opacity: 1 !important;
+  }
+
+  .dark input::placeholder,
+  .dark textarea::placeholder,
+  .dark select::placeholder {
+    color: #6b7280 !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+    opacity: 1 !important;
+  }
+
+  /* Sidebar navigation icons should be gray in dark mode */
+  .dark aside svg,
+  .dark .sidebar svg {
+    color: rgb(156 163 175) !important;
+  }
+
+  /* Comprehensive icon color preservation for all colored icons */
+  .dark .text-blue-600,
+  .dark .text-blue-600 svg,
+  .dark .text-blue-500,
+  .dark .text-blue-500 svg {
+    color: rgb(59 130 246) !important;
+  }
+
+  .dark .text-green-600,
+  .dark .text-green-600 svg,
+  .dark .text-green-600 span,
+  .dark .text-green-500,
+  .dark .text-green-500 svg {
+    color: rgb(34 197 94) !important;
+  }
+
+  .dark .text-red-600,
+  .dark .text-red-600 svg,
+  .dark .text-red-600 span,
+  .dark .text-red-500,
+  .dark .text-red-500 svg {
+    color: rgb(239 68 68) !important;
+  }
+
+  .dark .text-purple-600,
+  .dark .text-purple-600 svg,
+  .dark .text-purple-500,
+  .dark .text-purple-500 svg {
+    color: rgb(147 51 234) !important;
+  }
+
+  .dark .text-orange-600,
+  .dark .text-orange-600 svg,
+  .dark .text-orange-500,
+  .dark .text-orange-500 svg {
+    color: rgb(234 88 12) !important;
+  }
+
+  .dark .text-yellow-600,
+  .dark .text-yellow-600 svg,
+  .dark .text-yellow-500,
+  .dark .text-yellow-500 svg {
+    color: rgb(202 138 4) !important;
+  }
+
+  .dark .text-indigo-600,
+  .dark .text-indigo-600 svg,
+  .dark .text-indigo-500,
+  .dark .text-indigo-500 svg {
+    color: rgb(79 70 229) !important;
+  }
+
+  .dark .text-pink-600,
+  .dark .text-pink-600 svg,
+  .dark .text-pink-500,
+  .dark .text-pink-500 svg {
+    color: rgb(219 39 119) !important;
+  }
+
+  .dark .text-teal-600,
+  .dark .text-teal-600 svg,
+  .dark .text-teal-500,
+  .dark .text-teal-500 svg {
+    color: rgb(13 148 136) !important;
+  }
+
+  .dark .text-cyan-600,
+  .dark .text-cyan-600 svg,
+  .dark .text-cyan-500,
+  .dark .text-cyan-500 svg {
+    color: rgb(8 145 178) !important;
+  }
+
+  .dark .text-emerald-600,
+  .dark .text-emerald-600 svg,
+  .dark .text-emerald-500,
+  .dark .text-emerald-500 svg {
+    color: rgb(5 150 105) !important;
+  }
+
+  /* Preserve all colored elements with preserve-icon-color class */
+  .dark .preserve-icon-color,
+  .dark .preserve-icon-color svg,
+  .dark .preserve-icon-color *,
+  .dark [class*="text-primary"] svg,
+  .dark [class*="bg-blue"] svg,
+  .dark [class*="bg-green"] svg,
+  .dark [class*="bg-red"] svg,
+  .dark [class*="bg-purple"] svg,
+  .dark [class*="bg-orange"] svg,
+  .dark [class*="bg-yellow"] svg,
+  .dark [class*="bg-emerald"] svg,
+  .dark [class*="bg-teal"] svg,
+  .dark [class*="bg-cyan"] svg,
+  .dark [class*="bg-indigo"] svg,
+  .dark [class*="bg-pink"] svg {
+    color: inherit !important;
+  }
+
+  /* Force colored backgrounds to maintain their icon colors */
+  .dark .bg-blue-500 svg,
+  .dark .bg-green-500 svg,
+  .dark .bg-red-500 svg,
+  .dark .bg-purple-500 svg,
+  .dark .bg-orange-500 svg,
+  .dark .bg-yellow-500 svg,
+  .dark .bg-emerald-500 svg,
+  .dark .bg-teal-500 svg {
+    color: white !important;
+  }
+
+  /* Preserve exact icon colors in dark mode */
+  .dark .preserve-icon-color.text-blue-600,
+  .dark .preserve-icon-color .text-blue-600 {
+    color: #2563eb !important;
+  }
+
+  .dark .preserve-icon-color.text-green-600,
+  .dark .preserve-icon-color .text-green-600 {
+    color: #16a34a !important;
+  }
+
+  .dark .preserve-icon-color.text-purple-600,
+  .dark .preserve-icon-color .text-purple-600 {
+    color: #9333ea !important;
+  }
+
+  .dark .preserve-icon-color.text-orange-600,
+  .dark .preserve-icon-color .text-orange-600 {
+    color: #ea580c !important;
+  }
+
+  .dark a .lucide-react {
+    color: rgb(209 213 219) !important;
+  }
+
+  /* Removed aggressive SVG color override to preserve icon colors */
+
+  /* Status and badge fixes */
+  .dark .bg-primary-50 {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+
+  .dark .text-primary-600 {
+    color: rgb(96 165 250) !important;
+  }
+
+  .dark .text-primary-700 {
+    color: rgb(147 197 253) !important;
+  }
+
+  /* Universal text visibility */
+  .dark * {
+    border-color: rgb(75 85 99) !important;
+  }
+
+  /* Apply text color only to text elements, not all elements */
+  .dark p,
+  .dark span:not([class*="text-"]),
+  .dark div:not([class*="text-"]):not([class*="bg-"]),
+  .dark label {
+    color: rgb(243 244 246) !important;
+  }
+
+  /* Preserve colored SVG icons by removing fill/stroke overrides */
+
+  /* Comprehensive background fixes */
+  .dark .bg-white {
+    background-color: rgb(31 41 55) !important;
+  }
+
+  .dark .bg-gray-50 {
+    background-color: rgb(55 65 81) !important;
+  }
+
+  .dark .bg-gray-100 {
+    background-color: rgb(55 65 81) !important;
+  }
+
+  /* Hover state fixes */
+  .dark .hover\:bg-gray-50:hover {
+    background-color: rgb(75 85 99) !important;
+  }
+
+  .dark .hover\:bg-gray-100:hover {
+    background-color: rgb(75 85 99) !important;
+  }
+
+  .dark .hover\:text-gray-600:hover {
+    color: rgb(209 213 219) !important;
+  }
+
+  /* Border fixes */
+  .dark .border-gray-200 {
+    border-color: rgb(75 85 99) !important;
+  }
+
+  .dark .border-gray-300 {
+    border-color: rgb(75 85 99) !important;
+  }
+
+  /* Text color fixes */
+  .dark .text-gray-500 {
+    color: rgb(156 163 175) !important;
+  }
+
+  .dark .text-gray-600 {
+    color: rgb(156 163 175) !important;
+  }
+
+  .dark .text-gray-700 {
+    color: rgb(209 213 219) !important;
+  }
+
+  .dark .text-gray-900 {
+    color: rgb(243 244 246) !important;
+  }
+
+  /* Clean dark mode overrides */
+  .dark body {
+    background-color: rgb(17 24 39) !important;
+  }
+
+  .dark .bg-gray-50 {
+    background-color: rgb(17 24 39) !important;
+  }
+
+  .dark .bg-gray-100 {
+    background-color: rgb(31 41 55) !important;
+  }
+
+  .dark .bg-primary-100 {
+    background-color: rgba(59, 130, 246, 0.1) !important;
+  }
+
+  .dark .text-primary-600 {
+    color: rgb(96 165 250) !important;
+  }
+}
+
+/* Custom scrollbar for data tables */
+.data-table-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.data-table-scroll::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+.data-table-scroll::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+.data-table-scroll::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Professional custom scrollbar for import preview */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-50 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+  transition: background-color 0.2s ease;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+.custom-scrollbar::-webkit-scrollbar-corner {
+  @apply bg-gray-50;
+}
+
+/* Kanban drag and drop styles */
+.kanban-column {
+  @apply min-h-[500px] bg-gray-50 rounded-2xl p-4;
+}
+
+.kanban-card {
+  @apply bg-white rounded-xl border border-gray-200 p-4 mb-3 shadow-soft cursor-pointer transition-all duration-120;
+}
+
+.kanban-card:hover {
+  @apply shadow-medium scale-[1.02];
+}
+
+.kanban-card.dragging {
+  @apply rotate-3 shadow-large scale-105;
+}
+
+/* Command palette styles */
+.cmdk-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+}
+
+.cmdk-dialog {
+  @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-white rounded-2xl shadow-large border border-gray-200 z-50;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-break {
+    page-break-after: always;
+  }
+}
+
+/* Clean toast styling without black rectangles */
+.dark [data-sonner-toast] {
+  background: #374151 !important;
+  color: #f3f4f6 !important;
+  border: 1px solid #4b5563 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark [data-sonner-toast] [data-title] {
+  color: #f3f4f6 !important;
+}
+
+.dark [data-sonner-toast] [data-description] {
+  color: #d1d5db !important;
+}
+
+/* Remove all toast overlays and backgrounds */
+[data-sonner-toaster],
+[data-sonner-toaster]>*,
+.dark [data-sonner-toaster],
+.dark [data-sonner-toaster]>* {
+  background: transparent !important;
+  backdrop-filter: none !important;
+}
+
+/* Remove react-hot-toast overlays */
+.dark div[style*="position: fixed"][style*="pointer-events"],
+.dark div[style*="position: fixed"][style*="z-index"] {
+  background: transparent !important;
+}
+
+/* Prevent any wrapper backgrounds */
+.dark [role="status"],
+.dark [role="alert"] {
+  background: transparent !important;
+}
+
+/* Only style the actual toast message */
+.dark [role="status"]>div:last-child,
+.dark [role="alert"]>div:last-child {
+  background: #374151 !important;
+  color: #f3f4f6 !important;
+  border: 1px solid #4b5563 !important;
+}
+
+/* Toast container z-index fix - higher than modals */
+.crm-toast-container {
+  z-index: 999999 !important;
+}
+
+.crm-toast {
+  z-index: 999999 !important;
+}
+
+/* Ensure toast appears above all form elements and modals */
+[data-sonner-toaster] {
+  z-index: 999999 !important;
+}
+
+/* React Hot Toast specific z-index */
+[data-hot-toast-container] {
+  z-index: 999999 !important;
+}
+
+[role="status"],
+[role="alert"] {
+  z-index: 999999 !important;
+}
+
+/* Drawer positioning fixes */
+.drawer-container {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  position: fixed !important;
+}
+
+.drawer-container * {
+  box-sizing: border-box;
+}
+
+.drawer-panel {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  position: absolute !important;
+}
+
+.lead-details-drawer {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+}
+
+.lead-details-drawer>* {
+  margin-top: 0 !important;
+}
+
+/* Ensure drawer panel starts from absolute top */
+.drawer-container aside {
+  top: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure drawer header has no top spacing */
+.drawer-container aside>div:first-child {
+  margin-top: 0 !important;
+  padding-top: 1rem !important;
+}
+
+.drawer-container aside h2 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Custom Date Picker Calendar Animation */
+@keyframes calendar-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-calendar-in {
+  animation: calendar-fade-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Global Cancel Button Styling - Bold and Dark for Better Visibility */
+button.bg-gray-500,
+button.bg-gray-600 {
+  font-weight: 500 !important;
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+}
+
+button.bg-gray-500:hover,
+button.bg-gray-600:hover {
+  background-color: #374151 !important;
+}
+
+/* Dark mode Cancel button styling */
+.dark button.bg-gray-500,
+.dark button.bg-gray-600 {
+  font-weight: 500 !important;
+  background-color: #4b5563 !important;
+  color: #ffffff !important;
+  border-color: #6b7280 !important;
+}
+
+.dark button.bg-gray-500:hover,
+.dark button.bg-gray-600:hover {
+  background-color: #374151 !important;
+  border-color: #4b5563 !important;
+}
+
+/* Task Actions Dropdown Menu Styling */
+.absolute.right-0.mt-1.w-48.bg-white,
+.absolute.right-0.bottom-full.mb-2.w-48.bg-white {
+  border: 1px solid #e5e7eb !important;
+}
+
+.dark .absolute.right-0.mt-1.w-48,
+.dark .absolute.right-0.bottom-full.mb-2.w-48 {
+  border: 1px solid #4b5563 !important;
+}
+
+/* Task Actions Hover States */
+.absolute.right-0 .py-1 button:hover,
+.absolute.right-0.bottom-full button:hover {
+  background-color: #f3f4f6 !important;
+}
+
+.dark .absolute.right-0 .py-1 button:hover,
+.dark .absolute.right-0.bottom-full button:hover {
+  background-color: #374151 !important;
+}

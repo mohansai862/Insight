@@ -1,0 +1,23 @@
+# Java compiled files
+*.class
+ 
+# Logs
+*.log
+ 
+# Maven
+target/
+ 
+# Gradle
+build/
+ 
+# VS Code
+.vscode/
+ 
+# Node modules
+node_modules/
+ 
+# Generated JS files (optional)
+*.js
+ 
+# OS files
+.DS_Store

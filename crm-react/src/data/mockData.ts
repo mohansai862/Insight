@@ -1,0 +1,372 @@
+/**
+ * Tech Tammina CRM - Mock Data
+ * Sample data for development and testing
+ */
+
+import type { Lead, Contact, Deal, Task, User, DashboardMetric, ChartData, Company } from '@/types';
+
+// Mock users data
+export const users: User[] = [
+  {
+    id: '1',
+    name: 'Sarah Wilson',
+    email: 'sarah@techtammina.com',
+    role: 'Sales Manager',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+  },
+  {
+    id: '2',
+    name: 'Mike Johnson',
+    email: 'mike@techtammina.com',
+    role: 'Account Executive',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face',
+  },
+  {
+    id: '3',
+    name: 'Emily Davis',
+    email: 'emily@techtammina.com',
+    role: 'Marketing Specialist',
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face',
+  },
+];
+
+// Mock leads data
+export const leads: Lead[] = [
+  {
+    id: '1',
+    name: 'John Smith',
+    email: 'john.smith@acme.com',
+    phone: '+1 (555) 123-4567',
+    company: 'Acme Corporation',
+    title: 'VP of Engineering',
+    status: 'new',
+    source: 'website',
+    score: 85,
+    value: 50000,
+    owner: users[0],
+    tags: ['enterprise', 'hot'],
+    notes: 'Interested in enterprise solution. Follow up next week.',
+    createdAt: new Date(Date.now() - 86400000).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000).toISOString(),
+    lastActivity: new Date(Date.now() - 7200000).toISOString(),
+  },
+  {
+    id: '2',
+    name: 'Alice Johnson',
+    email: 'alice@startup.io',
+    phone: '+1 (555) 987-6543',
+    company: 'StartupXYZ',
+    title: 'CTO',
+    status: 'qualified',
+    source: 'referral',
+    score: 72,
+    value: 25000,
+    owner: users[1],
+    tags: ['startup', 'tech'],
+    notes: 'Demo scheduled for next Tuesday.',
+    createdAt: new Date(Date.now() - 172800000).toISOString(),
+    updatedAt: new Date(Date.now() - 1800000).toISOString(),
+    lastActivity: new Date(Date.now() - 3600000).toISOString(),
+  },
+  {
+    id: '3',
+    name: 'Bob Wilson',
+    email: 'bob@enterprise.com',
+    phone: '+1 (555) 456-7890',
+    company: 'Enterprise Solutions',
+    title: 'Director of IT',
+    status: 'contacted',
+    source: 'linkedin',
+    score: 68,
+    value: 75000,
+    owner: users[0],
+    tags: ['enterprise', 'decision-maker'],
+    notes: 'Needs approval from board. High potential.',
+    createdAt: new Date(Date.now() - 259200000).toISOString(),
+    updatedAt: new Date(Date.now() - 86400000).toISOString(),
+    lastActivity: new Date(Date.now() - 86400000).toISOString(),
+  },
+];
+
+// Mock contacts data
+export const contacts: Contact[] = [
+  {
+    id: '1',
+    name: 'Sarah Chen',
+    email: 'sarah.chen@techcorp.com',
+    phone: '+1 (555) 234-5678',
+    company: 'TechCorp Industries',
+    title: 'Product Manager',
+    type: 'customer',
+    status: 'active',
+    owner: users[0],
+    tags: ['vip', 'product'],
+    location: 'San Francisco, CA',
+    notes: 'Key contact for product feedback.',
+    createdAt: new Date(Date.now() - 2592000000).toISOString(),
+    updatedAt: new Date(Date.now() - 86400000).toISOString(),
+  },
+  {
+    id: '2',
+    name: 'David Rodriguez',
+    email: 'david@innovate.com',
+    phone: '+1 (555) 345-6789',
+    company: 'Innovate Labs',
+    title: 'Engineering Lead',
+    type: 'prospect',
+    status: 'active',
+    owner: users[1],
+    tags: ['technical', 'integration'],
+    location: 'Austin, TX',
+    notes: 'Interested in API integration.',
+    createdAt: new Date(Date.now() - 1296000000).toISOString(),
+    updatedAt: new Date(Date.now() - 172800000).toISOString(),
+  },
+  {
+    id: '3',
+    name: 'Lisa Thompson',
+    email: 'lisa@globaltech.com',
+    phone: '+1 (555) 567-8901',
+    company: 'Global Tech Solutions',
+    title: 'VP of Operations',
+    type: 'customer',
+    status: 'active',
+    owner: users[2],
+    tags: ['operations', 'enterprise'],
+    location: 'New York, NY',
+    notes: 'Long-term customer, very satisfied.',
+    createdAt: new Date(Date.now() - 5184000000).toISOString(),
+    updatedAt: new Date(Date.now() - 259200000).toISOString(),
+  },
+];
+
+// Mock deals data
+export const deals: Deal[] = [
+  {
+    id: '1',
+    name: 'Enterprise Software License',
+    company: 'Acme Corporation',
+    value: 125000,
+    stage: 'proposal',
+    probability: 75,
+    expectedCloseDate: new Date(Date.now() + 1209600000).toISOString(),
+    owner: users[0],
+    tags: ['enterprise', 'software'],
+    description: 'Multi-year enterprise license agreement with support.',
+    createdAt: new Date(Date.now() - 1209600000).toISOString(),
+    updatedAt: new Date(Date.now() - 86400000).toISOString(),
+  },
+  {
+    id: '2',
+    name: 'API Integration Project',
+    company: 'StartupXYZ',
+    value: 45000,
+    stage: 'negotiation',
+    probability: 85,
+    expectedCloseDate: new Date(Date.now() + 604800000).toISOString(),
+    owner: users[1],
+    tags: ['api', 'integration'],
+    description: 'Custom API integration and setup services.',
+    createdAt: new Date(Date.now() - 864000000).toISOString(),
+    updatedAt: new Date(Date.now() - 172800000).toISOString(),
+  },
+  {
+    id: '3',
+    name: 'Consulting Services',
+    company: 'Global Tech Solutions',
+    value: 85000,
+    stage: 'qualified',
+    probability: 60,
+    expectedCloseDate: new Date(Date.now() + 2592000000).toISOString(),
+    owner: users[2],
+    tags: ['consulting', 'services'],
+    description: 'Strategic consulting and implementation services.',
+    createdAt: new Date(Date.now() - 432000000).toISOString(),
+    updatedAt: new Date(Date.now() - 259200000).toISOString(),
+  },
+];
+
+// Mock companies (accounts) data
+export const companies: Company[] = [
+  {
+    id: 'c1',
+    name: 'Acme Corporation',
+    website: 'https://acme.com',
+    industry: 'Manufacturing',
+    size: '501-1000',
+    revenue: 120000000,
+    address: { street: '123 Market St', city: 'San Francisco', state: 'CA', country: 'USA', zipCode: '94103' },
+    createdAt: new Date(Date.now() - 86400000 * 120).toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'c2',
+    name: 'StartupXYZ',
+    website: 'https://startupxyz.io',
+    industry: 'SaaS',
+    size: '51-200',
+    revenue: 3500000,
+    address: { street: '500 Tech Ave', city: 'Austin', state: 'TX', country: 'USA', zipCode: '73301' },
+    createdAt: new Date(Date.now() - 86400000 * 40).toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: 'c3',
+    name: 'Global Tech Solutions',
+    website: 'https://globaltech.com',
+    industry: 'Technology',
+    size: '1000+',
+    revenue: 550000000,
+    address: { street: '1 Madison Ave', city: 'New York', state: 'NY', country: 'USA', zipCode: '10010' },
+    createdAt: new Date(Date.now() - 86400000 * 365).toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+];
+
+// Mock tasks data
+export const tasks: Task[] = [
+  {
+    id: '1',
+    title: 'Follow up with John Smith',
+    description: 'Call to discuss enterprise pricing options',
+    type: 'call',
+    priority: 'high',
+    status: 'pending',
+    dueDate: new Date(Date.now() + 86400000).toISOString(),
+    owner: users[0],
+    relatedEntity: {
+      type: 'lead',
+      id: '1',
+      name: 'John Smith',
+    },
+    tags: ['follow-up', 'pricing'],
+    createdAt: new Date(Date.now() - 172800000).toISOString(),
+    updatedAt: new Date(Date.now() - 3600000).toISOString(),
+  },
+  {
+    id: '2',
+    title: 'Send proposal to Alice',
+    description: 'Prepare and send detailed proposal with pricing',
+    type: 'email',
+    priority: 'medium',
+    status: 'in_progress',
+    dueDate: new Date(Date.now() + 172800000).toISOString(),
+    owner: users[1],
+    relatedEntity: {
+      type: 'lead',
+      id: '2',
+      name: 'Alice Johnson',
+    },
+    tags: ['proposal', 'pricing'],
+    createdAt: new Date(Date.now() - 259200000).toISOString(),
+    updatedAt: new Date(Date.now() - 7200000).toISOString(),
+  },
+  {
+    id: '3',
+    title: 'Product demo preparation',
+    description: 'Prepare demo environment for Enterprise Solutions',
+    type: 'todo',
+    priority: 'medium',
+    status: 'completed',
+    dueDate: new Date(Date.now() - 86400000).toISOString(),
+    completedAt: new Date(Date.now() - 43200000).toISOString(),
+    owner: users[0],
+    relatedEntity: {
+      type: 'deal',
+      id: '1',
+      name: 'Enterprise Software License',
+    },
+    tags: ['demo', 'preparation'],
+    createdAt: new Date(Date.now() - 432000000).toISOString(),
+    updatedAt: new Date(Date.now() - 43200000).toISOString(),
+  },
+];
+
+// Mock dashboard metrics
+export const dashboardMetrics: DashboardMetric[] = [
+  {
+    id: 'total-leads',
+    title: 'Total Leads',
+    value: '1,247',
+    change: '+12%',
+    trend: 'up',
+    period: 'vs last month',
+  },
+  {
+    id: 'conversion-rate',
+    title: 'Conversion Rate',
+    value: '24.5%',
+    change: '+3.2%',
+    trend: 'up',
+    period: 'vs last month',
+  },
+  {
+    id: 'revenue',
+    title: 'Monthly Revenue',
+    value: '$125,430',
+    change: '+18%',
+    trend: 'up',
+    period: 'vs last month',
+  },
+  {
+    id: 'deals-closed',
+    title: 'Deals Closed',
+    value: '23',
+    change: '+5',
+    trend: 'up',
+    period: 'this month',
+  },
+];
+
+// Mock chart data
+export const chartData: ChartData[] = [
+  {
+    id: 'revenue-trend',
+    title: 'Revenue Trend',
+    type: 'line',
+    data: [
+      { name: 'Jan', value: 85000 },
+      { name: 'Feb', value: 92000 },
+      { name: 'Mar', value: 78000 },
+      { name: 'Apr', value: 105000 },
+      { name: 'May', value: 118000 },
+      { name: 'Jun', value: 125430 },
+    ],
+  },
+  {
+    id: 'leads-by-source',
+    title: 'Leads by Source',
+    type: 'pie',
+    data: [
+      { name: 'Website', value: 45 },
+      { name: 'Referral', value: 25 },
+      { name: 'LinkedIn', value: 20 },
+      { name: 'Email', value: 10 },
+    ],
+  },
+  {
+    id: 'pipeline-stages',
+    title: 'Pipeline by Stage',
+    type: 'bar',
+    data: [
+      { name: 'New', value: 15 },
+      { name: 'Qualified', value: 28 },
+      { name: 'Proposal', value: 22 },
+      { name: 'Negotiation', value: 18 },
+      { name: 'Won', value: 12 },
+      { name: 'Lost', value: 5 },
+    ],
+  },
+];
+
+// Export all mock data
+export const mockData = {
+  users,
+  leads,
+  contacts,
+  deals,
+  tasks,
+  dashboardMetrics,
+  chartData,
+  companies,
+};
